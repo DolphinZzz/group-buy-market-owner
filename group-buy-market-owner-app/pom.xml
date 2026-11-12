@@ -127,7 +127,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.lab05.Application</mainClass>
+                    <mainClass>com.market.Application</mainClass>
                     <layout>JAR</layout>
                 </configuration>
             </plugin>
