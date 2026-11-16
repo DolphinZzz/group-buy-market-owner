@@ -1,6 +1,7 @@
 package com.market.domain.activity.adapter.repository;
 
 import com.market.domain.activity.model.valobj.GroupBuyActivityDiscountVO;
+import com.market.domain.activity.model.valobj.SCSkuActivityVO;
 import com.market.domain.activity.model.valobj.SkuVO;
 
 /**
@@ -9,7 +10,9 @@ import com.market.domain.activity.model.valobj.SkuVO;
  * @description: 活动仓储
  */
 public interface IActivityRepository {
-    GroupBuyActivityDiscountVO queryGroupBuyActivityDiscountVO(String source, String channel);
+    GroupBuyActivityDiscountVO queryGroupBuyActivityDiscountVO(Long ActivityId);
 
     SkuVO querySkuByGoodsId(String goodsId);
+
+    SCSkuActivityVO querySCSkuActivityBySCGoodsId(String source, String channel, String goodsId);
 }

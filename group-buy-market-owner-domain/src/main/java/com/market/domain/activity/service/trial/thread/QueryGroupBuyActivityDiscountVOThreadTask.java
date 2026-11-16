@@ -3,6 +3,7 @@ package com.market.domain.activity.service.trial.thread;
 
 import com.market.domain.activity.adapter.repository.IActivityRepository;
 import com.market.domain.activity.model.valobj.GroupBuyActivityDiscountVO;
+import com.market.domain.activity.model.valobj.SCSkuActivityVO;
 
 import java.util.concurrent.Callable;
 
@@ -17,17 +18,23 @@ public class QueryGroupBuyActivityDiscountVOThreadTask implements Callable<Group
     private final String source;
     // 渠道
     private final String channel;
+    // 商品id
+    private final String goodsId;
     // 活动仓储
     private final IActivityRepository activityRepository;
 
-    public QueryGroupBuyActivityDiscountVOThreadTask(String source, String channel, IActivityRepository repository) {
+    public QueryGroupBuyActivityDiscountVOThreadTask(String source, String channel, String goodsId, IActivityRepository repository) {
         this.source = source;
         this.channel = channel;
+        this.goodsId = goodsId;
         this.activityRepository = repository;
     }
 
     @Override
     public GroupBuyActivityDiscountVO call() throws Exception {
-        return activityRepository.queryGroupBuyActivityDiscountVO(source,channel);
+        SCSkuActivityVO scSkuActivityVO = activityRepository.querySCSkuActivityBySCGoodsId(source, channel, goodsId);
+        if (null == scSkuActivityVO) return null;
+        // 查询活动信息
+        return activityRepository.queryGroupBuyActivityDiscountVO(scSkuActivityVO.getActivityId());
     }
 }
