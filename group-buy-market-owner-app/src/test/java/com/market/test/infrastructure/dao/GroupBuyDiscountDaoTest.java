@@ -13,8 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 import java.util.List;
 
-import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
-
 /**
  * @author: car
  * @create: 2026/11/12 16:20

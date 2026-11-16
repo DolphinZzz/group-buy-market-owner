@@ -3,6 +3,8 @@ package com.market.domain.activity.service.trial.factory;
 
 import com.market.domain.activity.model.entity.MarketProductEntity;
 import com.market.domain.activity.model.entity.TrialBalanceEntity;
+import com.market.domain.activity.model.valobj.GroupBuyActivityDiscountVO;
+import com.market.domain.activity.model.valobj.SkuVO;
 import com.market.domain.activity.service.trial.node.RootNode;
 import com.market.types.design.framework.tree.StrategyHandler;
 import lombok.AllArgsConstructor;
@@ -10,6 +12,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 
 /**
  * @author: car
@@ -34,6 +38,11 @@ public class DefaultActivityStrategyFactory {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class DynamicContext {
-
+        // 拼团活动营销配置值对象
+        private GroupBuyActivityDiscountVO groupBuyActivityDiscountVO;
+        // 商品信息
+        private SkuVO skuVO;
+        // 折扣价格
+        private BigDecimal deductionPrice;
     }
 }
