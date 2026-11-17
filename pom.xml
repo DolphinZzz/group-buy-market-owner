@@ -13,6 +13,7 @@
         <module>group-buy-market-owner-trigger</module>
         <module>group-buy-market-owner-infrastructure</module>
         <module>group-buy-market-owner-types</module>
+        <module>group-buy-market-owner-api</module>
     </modules>
 
     <repositories>

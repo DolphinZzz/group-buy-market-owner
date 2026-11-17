@@ -6,6 +6,7 @@ import com.market.domain.activity.model.valobj.DiscountTypeEnum;
 import com.market.domain.activity.model.valobj.GroupBuyActivityDiscountVO;
 import com.market.domain.activity.model.valobj.SCSkuActivityVO;
 import com.market.domain.activity.model.valobj.SkuVO;
+import com.market.infrastructure.DCC.DCCService;
 import com.market.infrastructure.dao.IGroupBuyActivityDao;
 import com.market.infrastructure.dao.IGroupBuyDiscountDao;
 import com.market.infrastructure.dao.ISCSkuActivityDao;
@@ -37,6 +38,8 @@ public class ActivityRepository implements IActivityRepository {
     private ISCSkuActivityDao scSkuActivityDao;
     @Resource
     private IRedisService redisService;
+    @Resource
+    private DCCService dccService;
 
     @Override
     public GroupBuyActivityDiscountVO queryGroupBuyActivityDiscountVO(Long activityId) {
@@ -107,5 +110,16 @@ public class ActivityRepository implements IActivityRepository {
         if (!bitSet.isExists()) return true;
         // 判断用户是否存在人群中
         return bitSet.get(redisService.getIndexFromUserId(userId));
+    }
+
+    @Override
+    public boolean downgradeSwitch() {
+        return dccService.isDowngradeSwitch();
+
+    }
+
+    @Override
+    public boolean cutRange(String userId) {
+        return dccService.isCutRange(userId);
     }
 }

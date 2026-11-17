@@ -36,6 +36,18 @@
             <groupId>com.lab05</groupId>
             <artifactId>group-buy-market-owner-domain</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.market</groupId>
+            <artifactId>group-buy-market-owner-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>4.5.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
