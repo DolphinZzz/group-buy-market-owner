@@ -1,5 +1,6 @@
 package com.market.types.exception;
 
+import com.market.types.enums.ResponseCode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -35,9 +36,14 @@ public class AppException extends RuntimeException {
         super.initCause(cause);
     }
 
+    public AppException(ResponseCode responseCode) {
+        this.code = responseCode.getCode();
+        this.info = responseCode.getInfo();
+    }
+
     @Override
     public String toString() {
-        return "com.lab05.x.api.types.exception.XApiException{" +
+        return "com.market.x.api.types.exception.XApiException{" +
                 "code='" + code + '\'' +
                 ", info='" + info + '\'' +
                 '}';
