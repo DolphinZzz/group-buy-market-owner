@@ -9,9 +9,9 @@ import com.market.domain.trade.model.valobj.GroupBuyProgressVO;
 /**
  * @author: car
  * @create: 2026/11/17 16:45
- * @description:
+ * @description: 拼团交易锁单服务接口
  */
-public interface ITradeOrderService {
+public interface ITradeLockOrderService {
     /**
      * 查询，未被支付消费完成的营销优惠订单
      *

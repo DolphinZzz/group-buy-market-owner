@@ -10,7 +10,7 @@ import com.market.domain.trade.model.entity.MarketPayOrderEntity;
 import com.market.domain.trade.model.entity.PayActivityEntity;
 import com.market.domain.trade.model.entity.PayDiscountEntity;
 import com.market.domain.trade.model.entity.UserEntity;
-import com.market.domain.trade.service.ITradeOrderService;
+import com.market.domain.trade.service.ITradeLockOrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,13 +33,13 @@ public class ITradeOrderServiceTest {
     private IIndexGroupBuyMarketService indexGroupBuyMarketService;
 
     @Resource
-    private ITradeOrderService tradeOrderService;
+    private ITradeLockOrderService tradeOrderService;
 
     @Test
     public void test_lockMarketPayOrder() throws Exception {
         // 入参信息
         Long activityId = 100123L;
-        String userId = "xiaofuge";
+        String userId = "xfg03";
         String goodsId = "9890001";
         String source = "s01";
         String channel = "c01";
@@ -67,7 +67,7 @@ public class ITradeOrderServiceTest {
         MarketPayOrderEntity marketPayOrderEntityNew = tradeOrderService.lockMarketPayOrder(
                 UserEntity.builder().userId(userId).build(),
                 PayActivityEntity.builder()
-                        .teamId(null)
+                        .teamId("07680194")
                         .activityId(groupBuyActivityDiscountVO.getActivityId())
                         .activityName(groupBuyActivityDiscountVO.getActivityName())
                         .startTime(groupBuyActivityDiscountVO.getStartTime())
@@ -81,6 +81,7 @@ public class ITradeOrderServiceTest {
                         .goodsName(trialBalanceEntity.getGoodsName())
                         .originalPrice(trialBalanceEntity.getOriginalPrice())
                         .deductionPrice(trialBalanceEntity.getDeductionPrice())
+                        .payPrice(trialBalanceEntity.getPayPrice())
                         .outTradeNo(outTradeNo)
                         .build());
 

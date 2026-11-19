@@ -12,7 +12,7 @@ import com.market.domain.trade.model.entity.PayActivityEntity;
 import com.market.domain.trade.model.entity.PayDiscountEntity;
 import com.market.domain.trade.model.entity.UserEntity;
 import com.market.domain.trade.model.valobj.GroupBuyProgressVO;
-import com.market.domain.trade.service.ITradeOrderService;
+import com.market.domain.trade.service.ITradeLockOrderService;
 import com.market.dto.LockMarketPayOrderRequestDTO;
 import com.market.dto.LockMarketPayOrderResponseDTO;
 import com.market.response.Response;
@@ -40,9 +40,8 @@ public class MarketTradeController implements IMarketTradeService {
 
     @Resource
     private IIndexGroupBuyMarketService indexGroupBuyMarketService;
-
     @Resource
-    private ITradeOrderService tradeOrderService;
+    private ITradeLockOrderService tradeOrderService;
 
     @Override
     public Response<LockMarketPayOrderResponseDTO> lockMarketPayOrder(LockMarketPayOrderRequestDTO lockMarketPayOrderRequestDTO) {
@@ -123,6 +122,7 @@ public class MarketTradeController implements IMarketTradeService {
                             .goodsName(trialBalanceEntity.getGoodsName())
                             .originalPrice(trialBalanceEntity.getOriginalPrice())
                             .deductionPrice(trialBalanceEntity.getDeductionPrice())
+                            .payPrice(trialBalanceEntity.getPayPrice())
                             .outTradeNo(outTradeNo)
                             .build());
 
