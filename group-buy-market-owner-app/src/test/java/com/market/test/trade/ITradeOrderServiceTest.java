@@ -39,11 +39,11 @@ public class ITradeOrderServiceTest {
     public void test_lockMarketPayOrder() throws Exception {
         // 入参信息
         Long activityId = 100123L;
-        String userId = "xfg03";
+        String userId = "xfg09";
         String goodsId = "9890001";
-        String source = "s01";
-        String channel = "c01";
-        String outTradeNo = "909000098111";
+        String source = "s02";
+        String channel = "c02";
+        String outTradeNo = "909000098113";
 
         // 1. 获取试算优惠，有【activityId】优先使用
         TrialBalanceEntity trialBalanceEntity = indexGroupBuyMarketService.indexMarketTrial(MarketProductEntity.builder()
@@ -67,11 +67,12 @@ public class ITradeOrderServiceTest {
         MarketPayOrderEntity marketPayOrderEntityNew = tradeOrderService.lockMarketPayOrder(
                 UserEntity.builder().userId(userId).build(),
                 PayActivityEntity.builder()
-                        .teamId("07680194")
+                        .teamId("64507683")
                         .activityId(groupBuyActivityDiscountVO.getActivityId())
                         .activityName(groupBuyActivityDiscountVO.getActivityName())
                         .startTime(groupBuyActivityDiscountVO.getStartTime())
                         .endTime(groupBuyActivityDiscountVO.getEndTime())
+                        .validTime(groupBuyActivityDiscountVO.getValidTime())
                         .targetCount(groupBuyActivityDiscountVO.getTarget())
                         .build(),
                 PayDiscountEntity.builder()

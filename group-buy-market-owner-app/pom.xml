@@ -79,6 +79,12 @@
             <version>2.9.0</version>
         </dependency>
 
+        <!-- http 接口框架 https://bugstack.cn/md/road-map/http.html -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+        </dependency>
+
         <!-- 工程模块；启动依赖 trigger->domain, infrastructure-->
         <dependency>
             <groupId>com.lab05</groupId>

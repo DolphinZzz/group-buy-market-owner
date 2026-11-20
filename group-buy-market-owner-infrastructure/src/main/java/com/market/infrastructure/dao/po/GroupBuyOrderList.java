@@ -1,10 +1,8 @@
 package com.market.infrastructure.dao.po;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.market.infrastructure.dao.po.base.Page;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -14,11 +12,12 @@ import java.util.Date;
  * @create: 2026/11/17 15:54
  * @description: 用户拼单明细
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class GroupBuyOrderList {
+public class GroupBuyOrderList extends Page {
     /** 自增ID */
     private Long id;
     /** 用户ID */
@@ -47,6 +46,8 @@ public class GroupBuyOrderList {
     private Integer status;
     /** 外部交易单号-确保外部调用唯一幂等 */
     private String outTradeNo;
+    /** 外部交易时间 */
+    private Date outTradeTime;
     /** 唯一业务ID */
     private String bizId;
     /** 创建时间 */
